@@ -1,0 +1,50 @@
+
+import java.util.Collections;
+import java.util.*;
+
+
+public class Fruit {
+	
+	private String name;
+	private double price;
+	
+	public Fruit(String name, double price) {
+		
+		if(price < 0 || name == null) {
+			throw new IllegalArgumentException("Please input valid parameters");
+		}
+		
+		this.name = name;
+		this.price = price;
+		
+	}
+	
+	public String getName() {
+		return this.name;		
+	}
+	
+	public double getPrice() {
+		
+		return this.price;
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		Fruit apple = new Fruit("Apple", 0.5);
+		Fruit banana = new Fruit("Banana", 0.75);
+		Fruit lemon = new Fruit("Lemon", 0.25);
+		Fruit peach = new Fruit("Peach", 0.3);
+		Fruit orange = new Fruit("Orange", 0.2);
+		
+		Fruit orangse = new Fruit(null, 0.2);
+		
+		
+		List<Fruit> listOfFruits = Arrays.asList(apple, banana, lemon, peach, orange);
+		
+		double sum = listOfFruits.stream().mapToDouble(Fruit::getPrice).sum();
+		System.out.println("total cost is "+sum);
+		
+	}
+
+}
